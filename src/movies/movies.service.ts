@@ -12,4 +12,15 @@ export class MoviesService {
   getOne(id: string): Movie {
     return this.movies.find((movie) => movie.id === +id);
   }
+
+  deleteOne(id: string): Movie[] {
+    return this.movies.filter((movie) => movie.id !== +id);
+  }
+
+  create(movieData) {
+    this.movies.push({
+      id: this.movies.length + 1,
+      ...movieData,
+    });
+  }
 }
