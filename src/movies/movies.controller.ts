@@ -31,7 +31,7 @@ export class MoviesController {
   }
 
   @Post('/')
-  create(@Body() movieData) {
+  create(@Body() movieData: CreateMovieDto) {
     return this.moviesService.create(movieData);
   }
 
@@ -42,9 +42,6 @@ export class MoviesController {
 
   @Patch('/:id')
   patch(@Param('id') movieId: string, @Body() updateData) {
-    return {
-      updatedMovie: movieId,
-      ...updateData,
-    };
+    return this.moviesService.update(movieId, updateData);
   }
 }
